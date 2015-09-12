@@ -1,0 +1,134 @@
+/*
+Theme Name: Angular nancy consulting theme
+Theme URI: nancyconsulting.com
+Author: option
+Author URI: plusdoption.com
+Description: AngularJS WP theme
+Version: 1.0
+*/
+
+/*Icons made by http://www.flaticon.com/authors/anton-saputro" title="Anton Saputro" Anton Saputro is licensed by CC BY 3.0 http://creativecommons.org/licenses/by/3.0/ */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+ul {padding: 0;}
+a {cursor: pointer}
+html {height: 100%;overflow-x:hidden;}
+body {color: #D1D1D1;font-family: sans-serif;overflow-x: hidden;text-align: center;}
+#content {	position: relative;max-width:340px;height: 600px;margin: 10% auto;overflow: hidden;
+	box-shadow: 0 0 5px black;
+	border: 1px solid #222;border:1px solid #111;border-top: 50px solid #111;border-bottom: 50px solid #111;border-radius: 10px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+0,141414+21,000000+99 */
+	background: #000000; /* Old browsers */
+	background: -moz-linear-gradient(top,  #000000 0%, #000000 0%, #141414 21%, #000000 99%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(0%,#000000), color-stop(21%,#141414), color-stop(99%,#000000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #000000 0%,#000000 0%,#141414 21%,#000000 99%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #000000 0%,#000000 0%,#141414 21%,#000000 99%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #000000 0%,#000000 0%,#141414 21%,#000000 99%); /* IE10+ */
+	background: linear-gradient(to bottom,  #000000 0%,#000000 0%,#141414 21%,#000000 99%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+.num {width: 100%;height:100%;display: -webkit-flex;display: -ms-flexbox;display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-justify-content: space-around; -ms-flex-pack: distribute; justify-content: space-around;list-style:  none;margin: 0 auto;}
+.num li {width:30%;margin-top:.5%;padding: 8px 0;border: 1px solid  #666;border-radius: 30px;color: #666}
+
+.main-control {position:absolute;bottom:0; left: 0; right:0;width:100%;height:50px;padding:5px 0;margin: 0 auto;text-align: center;z-index: 2;}
+.main-control a {display:inline-block;width: 32%;margin:0 ;color: #444;font:small-caps 1rem "helvetica";line-height: 50px;}
+.main-control a img {display:inline-block;padding:10px; vertical-align: middle;box-shadow: 0 0 0 #B1B1B1;}
+.container > article {position: absolute; top:30px; bottom: 0;width:100%;}
+.container .chrono {left: 100%; right: 200%;}
+.container .timer {left: 200%; right: 300%;}
+.container.sub-is-open > article {top:-80px;transition: all 400ms ease 200ms}
+.sub-is-open .sub-control {top:110px;}
+.sub-control {position:absolute;top:150px;width: 100%;}
+
+.control {width:100%;height:50px;margin: 10px auto;text-align: center;}
+.control a {position: relative;display:inline-block;margin:0 20px;margin-bottom:10px;width: 50px; height: 50px; border-radius: 25px;vertical-align: top;line-height: 50px;border: 1px solid #888;}
+.control a:after {content:"";position: absolute;top:-4px;left:-4px; right: 0; bottom: 0;border-radius: 100px;width: 58px; height: 58px; background: ##101010; z-index: -1}
+.control a:nth-of-type(2) {margin-top: 30px;}
+.control a img {position:relative;display: inline-block;width: 25px;vertical-align: middle;}
+
+
+.chrono .container {-webkit-transform: translateX(-100%);transform: translateX(-100%);}
+.timer .container {-webkit-transform: translateX(-200%);transform: translateX(-200%);}
+
+.is-actif {opacity: .4}
+.control a.is-full:after {background: #666;}
+
+.numpad {display: table;width:100%;margin: 0 auto;}
+.sub-control p {text-align: center;}
+.sub-control a {display: inline-block;}
+.ms a.ms,
+.s a.s,
+.min a.min,
+.hr a.hr {color: #BF1736;}
+
+
+.anim {transition: all 400ms ease;-webkit-transform:translateZ(0);transform:translateZ(0);}
+.timer .timer .control a.is-actif,
+.chrono .chrono .control a.is-actif {border-color: #888;}
+.chrono .chrono .control a {border-color: darkCyan;}
+.timer .timer .control a {border-color: #BF1736;}
+
+
+.sub-control,
+.main-control {transition: all 400ms ease}
+.ng-hide.ng-hide-remove {opacity: 0;}
+.ng-hide.ng-hide-remove.active {opacity: 1;}
+
+.ng-hide.ng-hide-add {opacity: 0;}
+.ng-hide.ng-hide-add.active {opacity: 1;}
+
+
+.visu {position: relative;top: -70%;}
+.visu.is-up {top:50px;}
+.visu.is-minize {top:-80px;}
+
+
+.date {position: absolute;top:50%;left:50%;right: 50%; bottom: 50%; margin-top: 20px; margin-left:-88px;width: 170px; height: 40px;color:#666;}
+.date span {display: inline-block;width:21.4%;padding:2px 0;box-shadow: inset 0 0 5px black;font-size: .65rem;}
+
+.score {position: absolute;top:50%;left:50%;right: 50%; bottom: 50%; margin-top: -20px; margin-left:-100px;width: 170px; height: 40px;}
+.score p {display: inline-block;vertical-align: middle;}
+.score span {box-shadow: inset 0 0 5px black;padding: 0 2px;}
+.score .main {font: 2rem "helvetica";color:#999;letter-spacing: -5px;}
+.score .main span {padding: 0 4px;letter-spacing: 0;}
+.score .main span:last-child {margin-left: 5px;}
+.score .sub {font:.8rem "helvetica"; text-align: left; width: 25px;}
+.score .sub span {position:relative;display: block;color:#666;width: 45px;}
+.score .sub span:first-child:after {content: "s";position: absolute;left:100%;margin-left:-28px;width:15px;color: #444;}
+.score .sub span:last-child {margin-top: 5px;}
+.score .sub span:last-child:after {content: "ms";position: absolute;left:100%;margin-left:-22px;width:15px;color: #444;}
+
+.score.s span.s,
+.score.min span.min,
+.score.ms span.ms,
+.score.hr span.hr {
+	color: #BF1736;
+	animation-name: flash;
+    -webkit-animation-duration: 6s;
+    animation-duration: 6s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+}

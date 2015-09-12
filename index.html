@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" class="stylesheet" type="text/css" href="css/index.css" />
+        <title>clock</title>
+        </head>
+        <body>
+          <section id="content" ng-app="clock" ng-controller="mainCtrl" ng-init="init.start('clock')" ng-class="mode">
+            <section class="visu anim" ng-class="{'is-up': !isUp, 'is-minize' : subControl}" >
+                <canvas id='canvas' width="300" height="300" ng-click="toggleSub()"></canvas>
+                <div class="score" ng-class="timeChosen">
+                    <p class="main">
+                        <span class="hr anim" ng-bind='score.hr' ng-click="chooseTime('hr')">00</span> :
+                        <span class="min anim" ng-bind='score.min' ng-click="chooseTime('min')">00</span>
+                    </p>
+                    <p class="sub">
+                        <span class="s anim" ng-bind='score.s' ng-click="chooseTime('s')">00</span>
+                        <span class="ms anim" ng-bind='score.ms' ng-click="chooseTime('ms')">00</span>
+                    </p>
+                </div>
+                <div class="date" ng-if="mode ==='clock'">
+                        <span ng-bind="date.da"></span>
+                        <span ng-bind="date.d"></span>
+                        <span ng-bind="date.m"></span>
+                        <span ng-bind="date.y"></span>
+                </div>
+            </section>
+            <section class="control-container">
+                <header class="main-control" ng-show="mainControl">
+                    <a id="clockBtn" class="clock" ng-click="init('clock')">
+                        <img ng-if="mode !== 'clock'" src="img/clock.png" width="25" height="25"/>
+                        <img ng-if="mode === 'clock'" src="img/clock-b.png" width="25" height="25"/>
+                    </a>
+                    <a id="chronoBtn" class="chrono" ng-click="init('chrono')">
+                        <img ng-if="mode !== 'chrono'" src="img/chrono.png" width="25" height="25"/>
+                        <img ng-if="mode === 'chrono'" src="img/chrono-bf.png" width="25" height="25"/>
+                    </a>
+                    <a id="timerBtn" class="timer" ng-click="init('timer')">
+                        <img ng-if="mode !== 'timer'" src="img/timer.png" width="25" height="25"/>
+                        <img ng-if="mode === 'timer'" src="img/timer-r.png" width="25" height="25"/>
+                    </a>
+                </header>
+                <section class="container anim" ng-class="{'sub-is-open' : subControl}">
+                    <article class="chrono anim">
+                        <p class="control">
+                        <a id="playBtn" ng-click="start()" ng-class="{'is-actif' : active.chrono}">
+                            <img ng-if="!active.chrono" src="img/play-bf.png"/>
+                            <img ng-if="active.chrono" src="img/play.png"/>
+                        </a>
+                        <a id="pauseBtn" ng-click="pause()" ng-class="{'is-actif' : !active.chrono}">
+                            <img ng-if="active.chrono" src="img/pause-bf.png"/>
+                            <img ng-if="!active.chrono" src="img/pause.png"/>
+                        </a>
+                        <a id="pauseBtn" onclick="mytimer.restart()">
+                            <img src="img/stop-bf.png"/>
+                        </a>
+                        </p>
+                    </article>
+                    <article class="timer anim">
+                        <p class="control">
+                        <a ng-click="start()" ng-class="{'is-actif' : active.timer}">
+                            <img ng-if="!active.timer" src="img/play-r.png"/>
+                            <img ng-if="active.timer" src="img/play.png"/>
+                        </a>
+                        <a ng-click="pause()" ng-class="{'is-actif' : !active.timer}">
+                            <img ng-if="active.timer" src="img/pause-r.png"/>
+                            <img ng-if="!active.timer" src="img/pause.png"/>
+                        </a>
+                        <a ng-click="toggleSub()" ng-class="{'is-actif' : subControl}">
+                            <img ng-if="!subControl" src="img/reset-r.png"/>
+                            <img ng-if="subControl" src="img/reset.png"/>
+                        </a>
+                        </p>
+                        <div ng-show="subControl" class="sub-control anim">
+                            <ul class="num">
+                                <li class="number" ng-click="setTime(1)">1</li>
+                                <li class="number" ng-click="setTime(2)">2</li>
+                                <li class="number" ng-click="setTime(3)">3</li>
+                                <li class="number" ng-click="setTime(4)">4</li>
+                                <li class="number" ng-click="setTime(5)">5</li>
+                                <li class="number" ng-click="setTime(6)">6</li>
+                                <li class="number" ng-click="setTime(7)">7</li>
+                                <li class="number" ng-click="setTime(8)">8</li>
+                                <li class="number" ng-click="setTime(9)">9</li>
+                                <li class="number" ng-click="setTime(0)">0</li>
+                            </ul>
+                        </div>
+                    </article>
+                </section>
+            </section>
+          </section>
+          <script class="script" type="text/javascript" src="js/angular.min.js" ></script>
+          <script class="script" type="text/javascript" src="js/timer.js"></script>
+          <script class="script" type="text/javascript" src="js/canvas-timer.js"></script>
+          <script class="script" type="text/javascript" src="js/ng-cordova.min.js" ></script>
+          <script class="script" type="text/javascript" src="js/animate.min.js" ></script>
+          <script class="script" type="text/javascript" src="js/app.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    </body>
+</html>
